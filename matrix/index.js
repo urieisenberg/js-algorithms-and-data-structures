@@ -17,4 +17,20 @@
 
 function matrix(n) {}
 
+
+//notes for solution: 
+//create empty array of arrays called 'results'
+//create a counter variable, starting at 1
+//as long as (start column <= end column) AND (start row <= end row)
+//loop from start column to end column
+//at results[start_row][i] assign counter variable
+//increment counter
+//increment start row
+//loop from start row to end row
+//at results[i][end_column] assign counter variable
+//increment counter
+//decrement end column
+//...repeat for other two sides
+
+
 module.exports = matrix;
