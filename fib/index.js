@@ -8,7 +8,7 @@
 // Example:
 //   fib(4) === 3
 
-// Solution 1 - Iterative Solution
+// Solution 1 - Iterative Solution - Linear Time Complexity
 // function fib(n) {
 //   let result = [0, 1];
 //   for (let i = 2; i <= n; i++) {
@@ -19,12 +19,34 @@
 //   return result[n];
 // }
 
-// Solution 2 - Recursive Solution
-function fib(n) {
+// Solution 2 - Recursive Solution - Exponential Time Complexity
+// function fib(n) {
+//   if (n < 2) {
+//     return n;
+//   }
+//   return fib(n - 1) + fib(n - 2);
+// }
+
+// Solution 3 - Recursive Solution - Linear Time Complexity
+function memoize(fn) {
+  const cache = {};
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+    const result = fn.apply(this, args);
+    cache[args] = result;
+    return result;
+  };
+}
+
+function slowFib(n) {
   if (n < 2) {
     return n;
   }
   return fib(n - 1) + fib(n - 2);
 }
+
+const fib = memoize(slowFib);
 
 module.exports = fib;
