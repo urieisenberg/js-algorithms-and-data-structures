@@ -12,13 +12,28 @@
 // and return the Node in the tree with the same value.
 
 class Node {
-    constructor(data){
-        this.data = data;
-        this.left = null;
-        this.right = null;
-    }
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
 
-    
+  insert(data) {
+    //recursive solution
+    if (data < this.data && this.left) {
+      // if data is less than the current node's data and there is a left node
+      this.left.insert(data); // call insert on the left node
+    } else if (data < this.data) {
+      // if data is less than the current node's data and there is no left node
+      this.left = new Node(data); // create a new node with the data and assign it to the left node
+    } else if (data > this.data && this.right) {
+      // if data is greater than the current node's data and there is a right node
+      this.right.insert(data); // call insert on the right node
+    } else if (data > this.data) {
+      // if data is greater than the current node's data and there is no right node
+      this.right = new Node(data); // create a new node with the data and assign it to the right node
+    }
+  }
 }
 
 module.exports = Node;
