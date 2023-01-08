@@ -43,8 +43,12 @@ class LinkedList {
 
       node = node.next;
     }
-    
+
     return node;
+  }
+
+  clear() {
+    this.head = null;
   }
 }
 
