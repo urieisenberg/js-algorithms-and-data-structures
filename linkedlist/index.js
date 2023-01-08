@@ -100,7 +100,7 @@ class LinkedList {
   removeAt(index) {
     if (!this.head) return; // empty list - nothing to remove
 
-    if (index === 0) { 
+    if (index === 0) {
       this.head = this.head.next;
       return;
     } // list with one node
@@ -108,6 +108,24 @@ class LinkedList {
     const previous = this.getAt(index - 1); // get the node before the one we want to remove
     if (!previous || !previous.next) return; // if there is no node before the one we want to remove, or there is no node after the one we want to remove, return
     previous.next = previous.next.next; // otherwise, set the next property on the previous node to skip over the node we want to remove
+  }
+
+  insertAt(data, index) {
+    if (!this.head) {
+      // empty list - insert at the beginning
+      this.head = new Node(data);
+      return;
+    }
+
+    if (index === 0) {
+      // insert at the beginning of the list
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    const previous = this.getAt(index - 1) || this.getLast(); // get the node before the index
+    const node = new Node(data, previous.next); // create a new node
+    previous.next = node; // set the next property on the previous node
   }
 }
 
