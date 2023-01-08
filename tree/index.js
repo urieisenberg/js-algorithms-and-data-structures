@@ -41,6 +41,16 @@ class Tree {
       fn(node); // call the function on the node
     }
   }
+
+  traverseDF(fn) {
+    const arr = [this.root];
+    while (arr.length) {
+      // while there are still nodes in the array
+      const node = arr.shift(); // remove the first node from the array
+      arr.unshift(...node.children); // add all of the children of the node to the beginning of the array
+      fn(node); // call the function on the node
+    }
+  }
 }
 
 module.exports = { Tree, Node };
