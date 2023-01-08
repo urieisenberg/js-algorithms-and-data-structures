@@ -34,6 +34,23 @@ class Node {
       this.right = new Node(data); // create a new node with the data and assign it to the right node
     }
   }
+
+  contains(data) {
+    if (data === this.data) {
+      // if the data is equal to the current node's data
+      return this; // return the current node
+    }
+
+    if (data < this.data && this.left) {
+      // if data is less than the current node's data and there is a left node
+      return this.left.contains(data); // call contains on the left node
+    } else if (data > this.data && this.right) {
+      // if data is greater than the current node's data and there is a right node
+      return this.right.contains(data); // call contains on the right node
+    }
+
+    return null; // if the data is not found, return null
+  }
 }
 
 module.exports = Node;
