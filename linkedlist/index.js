@@ -96,6 +96,19 @@ class LinkedList {
 
     return null; // if we've reached the end of the list or the list is empty, return null
   }
+
+  removeAt(index) {
+    if (!this.head) return; // empty list - nothing to remove
+
+    if (index === 0) { 
+      this.head = this.head.next;
+      return;
+    } // list with one node
+
+    const previous = this.getAt(index - 1); // get the node before the one we want to remove
+    if (!previous || !previous.next) return; // if there is no node before the one we want to remove, or there is no node after the one we want to remove, return
+    previous.next = previous.next.next; // otherwise, set the next property on the previous node to skip over the node we want to remove
+  }
 }
 
 module.exports = { Node, LinkedList };
