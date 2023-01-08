@@ -65,8 +65,8 @@ class LinkedList {
       return;
     } // list with one node
 
-    let previous = this.head; 
-    let node = this.head.next; 
+    let previous = this.head;
+    let node = this.head.next;
 
     while (node.next) {
       previous = node;
@@ -75,6 +75,13 @@ class LinkedList {
 
     previous.next = null;
   }
+
+  insertLast(data) {
+    const last = this.getLast(); // get the last node
+    if (last) last.next = new Node(data); // there are some existing nodes in our chain
+    else this.head = new Node(data); // the chain is empty
+  }
+
 }
 
 module.exports = { Node, LinkedList };
