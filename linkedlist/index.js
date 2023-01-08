@@ -15,7 +15,7 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    this.head = new Node(data, this.head);
+    this.insertAt(data, 0);
   }
 
   size() {
@@ -30,21 +30,22 @@ class LinkedList {
   }
 
   getFirst() {
-    return this.head;
+    return this.getAt(0);
   }
 
   getLast() {
-    if (!this.head) return null;
+    // if (!this.head) return null;
 
-    let node = this.head;
+    // let node = this.head;
 
-    while (node) {
-      if (!node.next) return node;
+    // while (node) {
+    //   if (!node.next) return node;
 
-      node = node.next;
-    }
+    //   node = node.next;
+    // }
 
-    return node;
+    // return node;
+    return this.getAt(this.size() - 1);
   }
 
   clear() {
@@ -52,35 +53,40 @@ class LinkedList {
   }
 
   removeFirst() {
-    if (!this.head) return;
+    // if (!this.head) return;
 
-    this.head = this.head.next;
+    // this.head = this.head.next;
+    this.removeAt(0);
   }
 
   removeLast() {
-    if (!this.head) return; // empty list
+    // if (!this.head) return; // empty list
 
-    if (!this.head.next) {
-      this.head = null;
-      return;
-    } // list with one node
+    // if (!this.head.next) {
+    //   this.head = null;
+    //   return;
+    // } // list with one node
 
-    let previous = this.head;
-    let node = this.head.next;
+    // let previous = this.head;
+    // let node = this.head.next;
 
-    while (node.next) {
-      previous = node;
-      node = node.next;
-    }
+    // while (node.next) {
+    //   previous = node;
+    //   node = node.next;
+    // }
 
-    previous.next = null;
+    // previous.next = null;
+
+    this.removeAt(this.size() - 1);
   }
 
   insertLast(data) {
-    const last = this.getLast(); // get the last node
-    if (last)
-      last.next = new Node(data); // there are some existing nodes in our chain
-    else this.head = new Node(data); // the chain is empty
+    // const last = this.getLast(); // get the last node
+    // if (last)
+    //   last.next = new Node(data); // there are some existing nodes in our chain
+    // else this.head = new Node(data); // the chain is empty
+
+    return this.insertAt(data, this.size());
   }
 
   getAt(index) {
