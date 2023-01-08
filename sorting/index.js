@@ -18,7 +18,29 @@ function bubbleSort(arr) {
   return arr;
 } // O(n^2) time complexity
 
-function selectionSort(arr) {}
+function selectionSort(arr) {
+  //iterate through the array
+  for (let i = 0; i < arr.length; i++) {
+    //set the index of the minimum element to the current index
+    let indexOfMin = i;
+    //iterate through the array again
+    for (let j = i + 1; j < arr.length; j++) {
+      //if the element at the current index is greater than the element at the minimum index
+      if (arr[indexOfMin] > arr[j]) {
+        //set the minimum index to the current index
+        indexOfMin = j;
+      }
+    }
+    //if the minimum index is not equal to the current index
+    if (indexOfMin !== i) {
+      //swap the two elements
+      let lesser = arr[indexOfMin];
+      arr[indexOfMin] = arr[i];
+      arr[i] = lesser;
+    }
+  }
+  return arr;
+} // n^2 time complexity
 
 function mergeSort(arr) {}
 
