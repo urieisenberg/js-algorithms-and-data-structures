@@ -42,8 +42,27 @@ function selectionSort(arr) {
   return arr;
 } // n^2 time complexity
 
-function mergeSort(arr) {}
+function mergeSort(arr) {
+  //
+}
 
-function merge(left, right) {}
+function merge(left, right) {
+  const results = [];
+
+  // while there are still elements in both arrays
+  while (left.length && right.length) {
+    // if the first element of the left array is less than the first element of the right array
+    if (left[0] < right[0]) {
+      // shift the first element of the left array into the results array
+      results.push(left.shift());
+    } else {
+      // shift the first element of the right array into the results array
+      results.push(right.shift());
+    }
+  }
+
+  // return the results array concatenated with the remaining elements of the left array and the right array
+  return [...results, ...left, ...right];
+}
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
